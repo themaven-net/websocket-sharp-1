@@ -878,14 +878,14 @@ namespace WebSocketSharp.Server
     /// <exception cref="ArgumentNullException">
     /// <paramref name="data"/> is <see langword="null"/>.
     /// </exception>
-    protected void Send (byte[] data)
+    protected void Send (byte[] data, Opcode opcode = Opcode.Binary)
     {
       if (_websocket == null) {
         var msg = "The current state of the connection is not Open.";
         throw new InvalidOperationException (msg);
       }
 
-      _websocket.Send (data);
+      _websocket.Send (data, opcode);
     }
 
     /// <summary>

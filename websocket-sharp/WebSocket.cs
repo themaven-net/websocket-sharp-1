@@ -3356,7 +3356,7 @@ namespace WebSocketSharp
     /// <exception cref="ArgumentNullException">
     /// <paramref name="data"/> is <see langword="null"/>.
     /// </exception>
-    public void Send (byte[] data)
+    public void Send (byte[] data, Opcode opcode = Opcode.Binary)
     {
       if (_readyState != WebSocketState.Open) {
         var msg = "The current state of the connection is not Open.";
@@ -3366,7 +3366,7 @@ namespace WebSocketSharp
       if (data == null)
         throw new ArgumentNullException ("data");
 
-      send (Opcode.Binary, new MemoryStream (data));
+      send (opcode, new MemoryStream (data));
     }
 
     /// <summary>
